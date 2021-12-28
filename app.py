@@ -14,21 +14,17 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user", "date", "date_AD", "date_ROC", "weekday", "time", "time_12", "time_24"],
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {"trigger": "advance","source": "user","dest": "date","conditions": "is_going_to_date",},
+        {"trigger": "advance","source": "user","dest": "weekday","conditions": "is_going_to_weekday",},
+        {"trigger": "advance","source": "user","dest": "time","conditions": "is_going_to_time",},
+        {"trigger": "advance","source": "date","dest": "date_AD","conditions": "is_going_to_date_AD",},
+        {"trigger": "advance","source": "date","dest": "date_ROC","conditions": "is_going_to_date_ROC",},
+        {"trigger": "advance","source": "weekday","dest": "search","conditions": "is_going_to_search",},
+        {"trigger": "advance","source": "time","dest": "time_12","conditions": "is_going_to_time_12",},
+        {"trigger": "advance","source": "time","dest": "time_24","conditions": "is_going_to_time_24",},
+        {"trigger": "go_back", "source": ["date", "date_AD", "date_ROC", "weekday", "time", "time_12", "time_24"], "dest": "user"},
     ],
     initial="user",
     auto_transitions=False,
@@ -104,7 +100,8 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            send_text_massage(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
+
 
     return "OK"
 
