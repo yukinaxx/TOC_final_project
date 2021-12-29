@@ -13,21 +13,21 @@ class TocMachine(GraphMachine):
     def is_going_to_date(self, event):
         text = event.message.text
         flag = (text.lower() == "日期")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
     def is_going_to_weekday(self, event):
         text = event.message.text
         flag = (text.lower() == "星期")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
     def is_going_to_time(self, event):
         text = event.message.text
         flag = (text.lower() == "時間")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
@@ -43,14 +43,14 @@ class TocMachine(GraphMachine):
     def is_going_to_date_AD(self, event):
         text = event.message.text
         flag = (text.lower() == "西元")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
     def is_going_to_date_ROC(self, event):
         text = event.message.text
         flag = (text.lower() == "民國")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
@@ -62,14 +62,14 @@ class TocMachine(GraphMachine):
     def is_going_to_time_12(self, event):
         text = event.message.text
         flag = (text.lower() == "12")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 
     def is_going_to_time_24(self, event):
         text = event.message.text
         flag = (text.lower() == "24")
-        if flag == False
+        if flag == False:
             self.go_back()
         return flag
 

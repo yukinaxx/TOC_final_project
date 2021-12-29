@@ -12,6 +12,7 @@ from utils import send_text_message
 
 load_dotenv()
 
+print("2\n")
 
 machine = TocMachine(
     states=["user", "date", "date_AD", "date_ROC", "weekday", "time", "time_12", "time_24"],
@@ -30,6 +31,8 @@ machine = TocMachine(
     auto_transitions=False,
     show_conditions=True,
 )
+
+print("1\n");
 
 app = Flask(__name__, static_url_path="")
 
