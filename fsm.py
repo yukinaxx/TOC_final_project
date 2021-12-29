@@ -5,10 +5,11 @@ from utils import send_text_message
 import time
 import datetime
 
-
+print("3\n")
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        print("4\n")
 
     def is_going_to_date(self, event):
         text = event.message.text
