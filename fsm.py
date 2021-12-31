@@ -16,21 +16,21 @@ class TocMachine(GraphMachine):
         #flag = (text == "日期")
         #if flag == False:
             #self.go_back(event)
-        return text == "日期"
+        return text == '日期'
 
     def is_going_to_weekday(self, event):
         text = event.message.text
         #flag = (text == "星期")
         #if flag == False:
             #self.go_back(event)
-        return text == "星期"
+        return text == '星期'
 
     def is_going_to_time(self, event):
         text = event.message.text
         #flag = (text == "時間")
         #if flag == False:
             #self.go_back(event)
-        return text == "時間"
+        return text == '時間'
 
     def on_enter_date(self):
         send_text_message(reply_token, "請問您想知道西元日期或是民國日期？(輸入「西元」或「民國」)")
@@ -46,14 +46,14 @@ class TocMachine(GraphMachine):
         #flag = (text == "西元")
         #if flag == False:
             #self.go_back(event)
-        return text == "西元"
+        return text == '西元'
 
     def is_going_to_date_ROC(self, event):
         text = event.message.text
         #flag = (text == "民國")
         #if flag == False:
             #self.go_back(event)
-        return text == "民國"
+        return text == '民國'
 
     def is_going_to_search(self, event):
         global day
@@ -65,14 +65,14 @@ class TocMachine(GraphMachine):
         #flag = (text == "12")
         #if flag == False:
             #self.go_back(event)
-        return text == "12"
+        return text == '12'
 
     def is_going_to_time_24(self, event):
         text = event.message.text
         #flag = (text == "24")
         #if flag == False:
             #self.go_back(event)
-        return text == "24"
+        return text == '24'
 
     def on_enter_date_AD(self):
         now = datetime.datetime.now()
