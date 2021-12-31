@@ -102,13 +102,13 @@ class TocMachine(GraphMachine):
 
     def on_enter_time_12(self, event):
         now = datetime.datetime.now()
-        result = time.strftime("%I:%M:%S %p", now)
-        send_text_message(event.reply_token, result)
+        #result = time.strftime("%I:%M:%S %p", now)
+        send_text_message(event.reply_token, now.strftime("%I:%M:%S %p"))
         self.go_back()
 
     def on_enter_time_24(self, event):
         now = datetime.datetime.now()
-        result = time.strftime("%H:%M:%S", now)
-        send_text_message(event.reply_token, result)
+        #result = time.strftime("%H:%M:%S", now)
+        send_text_message(event.reply_token, now.strftime("%H:%M:%S"))
         self.go_back()
 
