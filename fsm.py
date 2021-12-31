@@ -102,7 +102,7 @@ class TocMachine(GraphMachine):
             5 : '星期六',
             6 : '星期天',
         }
-        wday = datetime.datetime(day1[0],day[1],day[2]).strftime("%w")
+        wday = datetime.datetime(int(day1[0]),int(day[1]),int(day[2])).strftime("%w")
         send_text_message(event.reply_token, week_day_dict[wday])
         self.go_back()
         return False
