@@ -4,6 +4,8 @@ from utils import send_text_message
 
 import time
 import datetime
+from datetime import timezone
+from datetime import timedelta
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -101,9 +103,10 @@ class TocMachine(GraphMachine):
         self.go_back()
 
     def on_enter_time_12(self, event):
-        #now = time.localtime()
+        now = datetime.datetime.now()
+        now1 = now.astimezone(timezone(timedelta(hours=-8)))
         #result = time.strftime("%I:%M:%S %p", now)
-        send_text_message(event.reply_token, time.strftime("%I:%M:%S %p", time.localtime()))
+        send_text_message(event.reply_token, now1.strftime("%I:%M:%S %p"))
         self.go_back()
 
     def on_enter_time_24(self, event):
