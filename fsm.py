@@ -15,21 +15,21 @@ class TocMachine(GraphMachine):
         text = event.message.text
         flag = (text.lower() == "日期")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def is_going_to_weekday(self, event):
         text = event.message.text
         flag = (text.lower() == "星期")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def is_going_to_time(self, event):
         text = event.message.text
         flag = (text.lower() == "時間")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def on_enter_date(self):
@@ -45,14 +45,14 @@ class TocMachine(GraphMachine):
         text = event.message.text
         flag = (text.lower() == "西元")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def is_going_to_date_ROC(self, event):
         text = event.message.text
         flag = (text.lower() == "民國")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def is_going_to_search(self, event):
@@ -64,28 +64,28 @@ class TocMachine(GraphMachine):
         text = event.message.text
         flag = (text.lower() == "12")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def is_going_to_time_24(self, event):
         text = event.message.text
         flag = (text.lower() == "24")
         if flag == False:
-            self.go_back()
+            self.go_back(event)
         return flag
 
     def on_enter_date_AD(self):
         now = datetime.datetime.now()
         result = time.strftime("%Y-%m-%d", now)
         print(result)
-        self.go_back()
+        self.go_back(event)
         return False
 
     def on_enter_date_ROC(self):
         now = datetime.datetime.now()
         result = year(now()) - 1911 & mid(FormatDateTime(now(),2),5)
         print(result)
-        self.go_back()
+        self.go_back(event)
         return False
 
     def on_enter_search(self):
@@ -102,20 +102,20 @@ class TocMachine(GraphMachine):
         }
         wday = datetime.datetime(day1[0],day[1],day[2]).strftime("%w")
         send_text_message(reply_token, week_day_dict[wday])
-        self.go_back()
+        self.go_back(event)
         return False
 
     def on_enter_time_12(self):
         now = datetime.datetime.now()
         result = time.strftime("%I:%M:%S %p", now)
         print(result)
-        self.go_back()
+        self.go_back(event)
         return False
 
     def on_enter_time_24(self):
         now = datetime.datetime.now()
         result = time.strftime("%H:%M:%S", now)
         print(result)
-        self.go_back()
+        self.go_back(event)
         return False
 
