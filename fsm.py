@@ -74,8 +74,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_date_AD(self, event):
         now = datetime.datetime.now()
-        result = time.strftime("%Y-%m-%d", now)
-        send_text_message(event.reply_token, result)
+        #result = time.strftime("%Y-%m-%d", now)
+        send_text_message(event.reply_token, now.strftime("%Y-%m-%d"))
         self.go_back()
 
     def on_enter_date_ROC(self, event):
