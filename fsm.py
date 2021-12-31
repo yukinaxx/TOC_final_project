@@ -101,7 +101,7 @@ class TocMachine(GraphMachine):
         self.go_back()
 
     def on_enter_time_12(self, event):
-        now = datetime.datetime.now()
+        now = time.localtime()
         #result = time.strftime("%I:%M:%S %p", now)
         send_text_message(event.reply_token, now.strftime("%I:%M:%S %p"))
         self.go_back()
