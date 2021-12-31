@@ -104,7 +104,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_time_12(self, event):
         now = datetime.datetime.now()
-        now1 = now.astimezone(timezone(timedelta(hours=-8)))
+        now1 = now.astimezone(timezone(timedelta(hours=0)))
         #result = time.strftime("%I:%M:%S %p", now)
         send_text_message(event.reply_token, now1.strftime("%I:%M:%S %p"))
         self.go_back()
