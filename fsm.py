@@ -76,13 +76,15 @@ class TocMachine(GraphMachine):
 
     def on_enter_date_AD(self, event):
         now = datetime.datetime.now()
+        now1 = now.astimezone(timezone(timedelta(hours=+8)))
         #result = time.strftime("%Y-%m-%d", now)
-        send_text_message(event.reply_token, now.strftime("%Y-%m-%d"))
+        send_text_message(event.reply_token, now1.strftime("%Y-%m-%d"))
         self.go_back()
 
     def on_enter_date_ROC(self, event):
         now = datetime.datetime.now()
-        result = str(now.year-1911) + '-' + str(now.month) + '-' + str(now.day)
+        now1 = now.astimezone(timezone(timedelta(hours=+8)))
+        result = str(now1.year-1911) + '-' + str(now1.month) + '-' + str(now1.day)
         send_text_message(event.reply_token, result)
         self.go_back()
 
@@ -111,7 +113,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_time_24(self, event):
         now = datetime.datetime.now()
+        now1 = now.astimezone(timezone(timedelta(hours=+8)))
         #result = time.strftime("%H:%M:%S", now)
-        send_text_message(event.reply_token, now.strftime("%H:%M:%S"))
+        send_text_message(event.reply_token, now1.strftime("%H:%M:%S"))
         self.go_back()
 
