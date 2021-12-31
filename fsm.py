@@ -31,13 +31,13 @@ class TocMachine(GraphMachine):
         return text == '時間'
 
     def on_enter_date(self, event):
-        send_text_message(reply_token, "請問您想知道西元日期或是民國日期？(輸入「西元」或「民國」)")
+        send_text_message(event.reply_token, "請問您想知道西元日期或是民國日期？(輸入「西元」或「民國」)")
 
     def on_enter_weekday(self, event):
-        send_text_message(reply_token, "請輸入想查詢的西元年月日(輸入「西元年/月/日」)")
+        send_text_message(event.reply_token, "請輸入想查詢的西元年月日(輸入「西元年/月/日」)")
 
     def on_enter_time(self, event):
-        send_text_message(reply_token, "請問您想以12小時制還是24小時制表示？(輸入「12」或「24」)")
+        send_text_message(event.reply_token, "請問您想以12小時制還是24小時制表示？(輸入「12」或「24」)")
 
     def is_going_to_date_AD(self, event):
         text = event.message.text
@@ -75,13 +75,13 @@ class TocMachine(GraphMachine):
     def on_enter_date_AD(self, event):
         now = datetime.datetime.now()
         result = time.strftime("%Y-%m-%d", now)
-        print(result)
+        send_text_message(event.reply_token, result)
         self.go_back()
 
     def on_enter_date_ROC(self, event):
         now = datetime.datetime.now()
         result = year(now()) - 1911 & mid(FormatDateTime(now(),2),5)
-        print(result)
+        send_text_message(event.reply_token, result)
         self.go_back()
 
     def on_enter_search(self, event):
@@ -97,18 +97,18 @@ class TocMachine(GraphMachine):
             6 : '星期天',
         }
         wday = datetime.datetime(day1[0],day[1],day[2]).strftime("%w")
-        send_text_message(reply_token, week_day_dict[wday])
+        send_text_message(event.reply_token, week_day_dict[wday])
         self.go_back()
 
     def on_enter_time_12(self, event):
         now = datetime.datetime.now()
         result = time.strftime("%I:%M:%S %p", now)
-        print(result)
+        send_text_message(event.reply_token, result)
         self.go_back()
 
     def on_enter_time_24(self, event):
         now = datetime.datetime.now()
         result = time.strftime("%H:%M:%S", now)
-        print(result)
+        send_text_message(event.reply_token, result)
         self.go_back()
 
