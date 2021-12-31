@@ -80,7 +80,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_date_ROC(self, event):
         now = datetime.datetime.now()
-        result = (now.year - 1911) + "-" + now.month + "-" + now.day
+        result = new datetime(now.year-1911,now.month,now.day).Tostring("yyyMMdd")
         send_text_message(event.reply_token, result)
         self.go_back()
 
