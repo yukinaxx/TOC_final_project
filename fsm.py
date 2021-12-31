@@ -80,6 +80,7 @@ class TocMachine(GraphMachine):
         #result = time.strftime("%Y-%m-%d", now)
         send_text_message(event.reply_token, now1.strftime("%Y-%m-%d"))
         self.go_back()
+        return False
 
     def on_enter_date_ROC(self, event):
         now = datetime.datetime.now()
@@ -87,6 +88,7 @@ class TocMachine(GraphMachine):
         result = str(now1.year-1911) + '-' + str(now1.month) + '-' + str(now1.day)
         send_text_message(event.reply_token, result)
         self.go_back()
+        return False
 
     def on_enter_search(self, event):
         global day
@@ -103,6 +105,7 @@ class TocMachine(GraphMachine):
         wday = datetime.datetime(day1[0],day[1],day[2]).strftime("%w")
         send_text_message(event.reply_token, week_day_dict[wday])
         self.go_back()
+        return False
 
     def on_enter_time_12(self, event):
         now = datetime.datetime.now()
@@ -110,6 +113,7 @@ class TocMachine(GraphMachine):
         #result = time.strftime("%I:%M:%S %p", now)
         send_text_message(event.reply_token, now1.strftime("%I:%M:%S %p"))
         self.go_back()
+        return False
 
     def on_enter_time_24(self, event):
         now = datetime.datetime.now()
@@ -117,4 +121,5 @@ class TocMachine(GraphMachine):
         #result = time.strftime("%H:%M:%S", now)
         send_text_message(event.reply_token, now1.strftime("%H:%M:%S"))
         self.go_back()
+        return False
 

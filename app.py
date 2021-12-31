@@ -31,7 +31,7 @@ machine = TocMachine(
     show_conditions=True,
 )
 
-print("2022.1.1 01.13\n");
+print("2022.1.1 01.18\n");
 
 app = Flask(__name__, static_url_path="")
 
@@ -104,7 +104,8 @@ def webhook_handler():
         #if machine.state == 'user':
         #send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
         if response == False:
-        	send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
+        	if machine.state == 'user':
+        		send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
     return "OK"
 
 
