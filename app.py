@@ -31,7 +31,7 @@ machine = TocMachine(
     show_conditions=True,
 )
 
-print("2022.1.1 10.31\n");
+print("2022.1.1 10.36\n");
 
 app = Flask(__name__, static_url_path="")
 
@@ -90,8 +90,6 @@ def webhook_handler():
     except InvalidSignatureError:
         abort(400)
 
-    send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
-
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
@@ -103,9 +101,9 @@ def webhook_handler():
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
-        if response == False:
-        	if machine.state == 'user':
-        		send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
+        if response == False or machine.state == 'user':
+        	#if machine.state == 'user':
+        	send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
     return "OK"
 
 
