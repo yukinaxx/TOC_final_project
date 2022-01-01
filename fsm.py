@@ -41,6 +41,9 @@ class TocMachine(GraphMachine):
     def on_enter_time(self, event):
         send_text_message(event.reply_token, "請問您想以12小時制還是24小時制表示？(輸入「12」或「24」)")
 
+    def on_enter_user(self, event):
+        send_text_message(event.reply_token,'請問您要使用哪項功能？\n查詢今日日期(輸入「日期」)\n查詢某日星期(輸入「星期」)\n查詢現在時間(輸入「時間」)')
+
     def is_going_to_date_AD(self, event):
         text = event.message.text
         #flag = (text == "西元")
