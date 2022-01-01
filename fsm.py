@@ -96,13 +96,13 @@ class TocMachine(GraphMachine):
         day1 = day.split('/',2)
         print("date arr = ",day1)
         week_day_dict = {
-            0 : '星期一',
-            1 : '星期二',
-            2 : '星期三',
-            3 : '星期四',
-            4 : '星期五',
-            5 : '星期六',
-            6 : '星期天',
+            1 : '星期一',
+            2 : '星期二',
+            3 : '星期三',
+            4 : '星期四',
+            5 : '星期五',
+            6 : '星期六',
+            0 : '星期天',
         }
         wday = datetime.datetime(int(day1[0]),int(day1[1]),int(day1[2])).strftime("%w")
         send_text_message(event.reply_token, week_day_dict[int(wday)])
