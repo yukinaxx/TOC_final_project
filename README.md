@@ -74,16 +74,13 @@ Or You can use [servo](http://serveo.net/) to expose local servers to the intern
 ![fsm](./img/show-fsm.png)
 
 ## Usage
-The initial state is set to `user`.
+初始狀態為`user`.
+若輸入"日期->西元"會顯示當天的西元年月日，輸入"日期->民國"則會顯示當天的民國年月日
+若輸入"星期->某天的西元年/月/日"會顯示該日期為星期幾
+若輸入"時間->12"會顯示當下時間的12小時制，輸入"時間->24"則會顯示當下時間的24小時制
+若輸入其他不特定文字則會顯示使用指南
 
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
 
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
 
 ## Deploy
 Setting to deploy webhooks on Heroku.
