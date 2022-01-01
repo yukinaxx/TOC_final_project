@@ -93,7 +93,8 @@ class TocMachine(GraphMachine):
     def on_enter_search(self, event):
         global day
         print("date = ",day)
-        day1 = day.split(' ',2)
+        day1 = day.split('/',2)
+        print("date arr = ",day1)
         week_day_dict = {
             0 : '星期一',
             1 : '星期二',
