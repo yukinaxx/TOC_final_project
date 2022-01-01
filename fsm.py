@@ -36,7 +36,7 @@ class TocMachine(GraphMachine):
         send_text_message(event.reply_token, "請問您想知道西元日期或是民國日期？(輸入「西元」或「民國」)")
 
     def on_enter_weekday(self, event):
-        send_text_message(event.reply_token, "請輸入想查詢的西元年月日(輸入「西元年/月/日」)")
+        send_text_message(event.reply_token, "請輸入想查詢的西元年月日(輸入「西元年 月 日」)")
 
     def on_enter_time(self, event):
         send_text_message(event.reply_token, "請問您想以12小時制還是24小時制表示？(輸入「12」或「24」)")
@@ -93,7 +93,7 @@ class TocMachine(GraphMachine):
     def on_enter_search(self, event):
         global day
         print("date = ",day)
-        day1 = day.split('/',2)
+        day1 = day.split(' ',2)
         week_day_dict = {
             0 : '星期一',
             1 : '星期二',
