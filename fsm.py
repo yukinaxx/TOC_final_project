@@ -13,23 +13,14 @@ class TocMachine(GraphMachine):
 
     def is_going_to_date(self, event):
         text = event.message.text
-        #flag = (text == "日期")
-        #if flag == False:
-            #self.go_back(event)
         return text == '日期'
 
     def is_going_to_weekday(self, event):
         text = event.message.text
-        #flag = (text == "星期")
-        #if flag == False:
-            #self.go_back(event)
         return text == '星期'
 
     def is_going_to_time(self, event):
         text = event.message.text
-        #flag = (text == "時間")
-        #if flag == False:
-            #self.go_back(event)
         return text == '時間'
 
     def on_enter_date(self, event):
@@ -43,16 +34,10 @@ class TocMachine(GraphMachine):
 
     def is_going_to_date_AD(self, event):
         text = event.message.text
-        #flag = (text == "西元")
-        #if flag == False:
-            #self.go_back(event)
         return text == '西元'
 
     def is_going_to_date_ROC(self, event):
         text = event.message.text
-        #flag = (text == "民國")
-        #if flag == False:
-            #self.go_back(event)
         return text == '民國'
 
     def is_going_to_search(self, event):
@@ -62,22 +47,15 @@ class TocMachine(GraphMachine):
 
     def is_going_to_time_12(self, event):
         text = event.message.text
-        #flag = (text == "12")
-        #if flag == False:
-            #self.go_back(event)
         return text == '12'
 
     def is_going_to_time_24(self, event):
         text = event.message.text
-        #flag = (text == "24")
-        #if flag == False:
-            #self.go_back(event)
         return text == '24'
 
     def on_enter_date_AD(self, event):
         now = datetime.datetime.now()
         now1 = now.astimezone(timezone(timedelta(hours=+8)))
-        #result = time.strftime("%Y-%m-%d", now)
         send_text_message(event.reply_token, now1.strftime("%Y-%m-%d"))
         self.go_back()
         return False
@@ -92,9 +70,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_search(self, event):
         global day
-        print("date = ",day)
         day1 = day.split('/',2)
-        print("date arr = ",day1)
         week_day_dict = {
             1 : '星期一',
             2 : '星期二',
@@ -112,7 +88,6 @@ class TocMachine(GraphMachine):
     def on_enter_time_12(self, event):
         now = datetime.datetime.now()
         now1 = now.astimezone(timezone(timedelta(hours=+8)))
-        #result = time.strftime("%I:%M:%S %p", now)
         send_text_message(event.reply_token, now1.strftime("%I:%M:%S %p"))
         self.go_back()
         return False
@@ -120,7 +95,6 @@ class TocMachine(GraphMachine):
     def on_enter_time_24(self, event):
         now = datetime.datetime.now()
         now1 = now.astimezone(timezone(timedelta(hours=+8)))
-        #result = time.strftime("%H:%M:%S", now)
         send_text_message(event.reply_token, now1.strftime("%H:%M:%S"))
         self.go_back()
         return False

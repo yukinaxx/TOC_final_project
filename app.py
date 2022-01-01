@@ -31,8 +31,6 @@ machine = TocMachine(
     show_conditions=True,
 )
 
-print("2022.1.1 11.31\n");
-
 app = Flask(__name__, static_url_path="")
 
 
