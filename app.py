@@ -76,6 +76,8 @@ def callback():
 
     return "OK"
 
+show_fsm()
+
 
 @app.route("/webhook", methods=["POST"])
 def webhook_handler():
