@@ -23,6 +23,10 @@ class TocMachine(GraphMachine):
         text = event.message.text
         return text == '時間'
 
+    def is_going_to_demo(self, event):
+        text = event.message.text
+        return text == 'demo'
+
     def on_enter_date(self, event):
         send_text_message(event.reply_token, "請問您想知道西元日期或是民國日期？(輸入「西元」或「民國」)")
 
@@ -31,6 +35,11 @@ class TocMachine(GraphMachine):
 
     def on_enter_time(self, event):
         send_text_message(event.reply_token, "請問您想以12小時制還是24小時制表示？(輸入「12」或「24」)")
+
+    def on_enter_demo(self, event):
+        send_text_message(event.reply_token, "Now is in state demo")
+        self.go_back()
+        return False
 
     def is_going_to_date_AD(self, event):
         text = event.message.text

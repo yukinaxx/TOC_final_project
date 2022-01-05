@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "date", "date_AD", "date_ROC", "weekday", "search", "time", "time_12", "time_24"],
+    states=["user", "date", "date_AD", "date_ROC", "weekday", "search", "time", "time_12", "time_24", "demo"],
     transitions=[
         {"trigger": "advance","source": "user","dest": "date","conditions": "is_going_to_date",},
         {"trigger": "advance","source": "user","dest": "weekday","conditions": "is_going_to_weekday",},
@@ -24,7 +24,8 @@ machine = TocMachine(
         {"trigger": "advance","source": "weekday","dest": "search","conditions": "is_going_to_search",},
         {"trigger": "advance","source": "time","dest": "time_12","conditions": "is_going_to_time_12",},
         {"trigger": "advance","source": "time","dest": "time_24","conditions": "is_going_to_time_24",},
-        {"trigger": "go_back", "source": ["date_AD", "date_ROC", "search", "time_12", "time_24"], "dest": "user"},
+        {"trigger": "advance","source": "user","dest": "demo","conditions": "is_going_to_demo",},
+        {"trigger": "go_back", "source": ["date_AD", "date_ROC", "search", "time_12", "time_24", "demo"], "dest": "user"},
     ],
     initial="user",
     auto_transitions=False,
